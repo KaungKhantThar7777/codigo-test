@@ -119,21 +119,20 @@ const Title = styled.h3`
 const Details = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 60px 0;
 
-  @media ${QUERIES.tabletAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     flex-direction: row-reverse;
     align-items: center;
     padding-bottom: 90px;
-    gap: 64px;
+    flex-wrap: wrap;
+    gap: 32px;
   }
 `;
 
 const SliderWrapper = styled.div`
-  @media ${QUERIES.tabletAndUp} {
-    height: 32vw;
-    width: 32vw;
-  }
+  width: 100%;
 
   $media ${QUERIES.laptopAndUp} {
     width: 45%;
@@ -164,6 +163,12 @@ const Action = styled.a`
     font-size: 0.7rem;
     letter-spacing: 0;
     text-transform: none;
+  }
+
+  @media ${QUERIES.tabletAndUp} {
+    padding: 12px;
+
+    padding-right: 127px;
   }
 `;
 const Icon = styled.div`
@@ -198,16 +203,16 @@ const FeatureTitle = styled.p`
 const FeaturesContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media ${QUERIES.tabletAndUp} {
+  padding-top: 24px;
+  @media ${QUERIES.laptopAndUp} {
     flex-direction: row;
     gap: 64px;
   }
 `;
 const KeyFeatures = styled.div`
   font-size: 1rem;
-  padding-left: 32px;
-  @media ${QUERIES.tabletAndUp} {
+  @media ${QUERIES.laptopAndUp} {
+    padding-left: 32px;
     border-left: 1px solid #dad6da;
   }
   & li {

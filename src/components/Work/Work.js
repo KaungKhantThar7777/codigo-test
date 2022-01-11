@@ -54,7 +54,6 @@ const Wrapper = styled(Link)`
   transform-origin: 80% 90%;
   animation-delay: 0.0339282s;
   backface-visibility: visible;
-
   overflow: hidden;
 
   @media ${QUERIES.tabletAndUp} {
@@ -79,7 +78,7 @@ const Wrapper = styled(Link)`
     left: 0;
     opacity: 0;
     z-index: -1;
-    transition: opacity 0.6s;
+    transition: opacity 0.8s;
   }
   &:hover {
     &::after {
@@ -99,8 +98,8 @@ const Img = styled.img`
   transition: transform 0.7s ease-in-out;
   will-change: transform;
   ${Wrapper}:hover & {
-    transform: scale(1.15);
-    transition: all 0.5s ease-in-out;
+    transform: scale(1.1);
+    transition: all 0.5s ease-in;
     background-color: rgba(0, 0, 0, 0.325);
   }
 `;

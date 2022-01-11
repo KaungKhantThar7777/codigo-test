@@ -60,7 +60,7 @@ html {
   --font-weight-medium: ${WEIGHTS.medium};
   --font-weight-bold: ${WEIGHTS.bold};
   --font-weight-bolder:${WEIGHTS.bolder};
-    font-family:'Inter', sans-serif;
+    font-family:'Roboto', sans-serif;
  
 }
 

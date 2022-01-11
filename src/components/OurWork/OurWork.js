@@ -64,9 +64,9 @@ const OurWork = () => {
 };
 
 const Description = styled.div`
-  padding-top: 140px;
+  padding-top: 120px;
   padding-bottom: 60px;
-  font-weight: var(--font-weight-bolder);
+  font-weight: var(--font-weight-bold);
 
   p {
     font-size: 11vw;
@@ -88,6 +88,7 @@ const Description = styled.div`
 
 const CategoriesWrapper = styled.div`
   display: none;
+  gap: 64px;
 
   @media ${QUERIES.tabletAndUp} {
     display: flex;
@@ -96,14 +97,18 @@ const CategoriesWrapper = styled.div`
     flex-wrap: wrap;
     margin-bottom: 50px;
   }
+
+  @media ${QUERIES.laptopAndUp} {
+    margin-bottom: 80px;
+  }
 `;
 
 const Categories = styled.div`
   min-width: 500px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px 10px;
-  flex: 1;
+  gap: 5px;
+  flex: 3;
 `;
 
 const ActiveCategory = css`
@@ -134,6 +139,7 @@ const Category = styled.p`
 `;
 const Legend = styled.div`
   margin-top: 48px;
+  flex: 1;
 
   p {
     font-weight: var(--font-weight-bold);
