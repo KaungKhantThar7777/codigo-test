@@ -64,8 +64,10 @@ const WorkDetails = () => {
                 rel="noopener noreferrer"
               >
                 <Ios />
-                <p>Available on </p>
-                <p>App Store</p>
+                <div>
+                  <p>Available on </p>
+                  <p>App Store</p>
+                </div>
               </Action>
 
               <Action
@@ -74,8 +76,10 @@ const WorkDetails = () => {
                 rel="noopener noreferrer"
               >
                 <Android />
-                <p>Available on </p>
-                <p>Google play</p>
+                <div>
+                  <p>Available on </p>
+                  <p>Google play</p>
+                </div>
               </Action>
             </Actions>
 
@@ -124,19 +128,21 @@ const Details = styled.div`
 
   @media ${QUERIES.laptopAndUp} {
     flex-direction: row-reverse;
-    align-items: center;
+    align-items: start;
     padding-bottom: 90px;
     flex-wrap: wrap;
     gap: 32px;
+    padding: 0;
+    padding-bottom: 90px;
   }
 `;
 
 const SliderWrapper = styled.div`
   width: 100%;
 
-  $media ${QUERIES.laptopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     width: 45%;
-    margin-top: -300px;
+    margin-top: -100px;
   }
 `;
 const ImgWrapper = styled.div`
@@ -151,7 +157,8 @@ const Actions = styled.div`
 `;
 
 const Action = styled.a`
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: 8px 12px;
   border: 1px solid #dad6da;
   font-size: 0.5rem;
@@ -170,6 +177,12 @@ const Action = styled.a`
 
     padding-right: 127px;
   }
+
+  @media ${QUERIES.laptopAndUp} {
+    padding: 16px 48px;
+    flex-direction: row;
+    gap: 10px;
+  }
 `;
 const Icon = styled.div`
   width: 25px;
@@ -185,7 +198,11 @@ const Android = styled(Icon)`
   background-image: url(https://www.codigo.co/img/ui/ico-google_play-store.png);
 `;
 
-const Texts = styled.div``;
+const Texts = styled.div`
+  @media ${QUERIES.laptopAndUp} {
+    flex: 1;
+  }
+`;
 const Description = styled.p`
   margin: 30px 0;
   font-size: 0.9rem;
