@@ -3,12 +3,10 @@ import styled, { css, keyframes } from "styled-components";
 
 import { QUERIES, WEIGHTS } from "../../constants";
 
-import UnstyledButton from "../UnstyledButton";
-
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
     <Overlay isOpen={isOpen}>
-      <Content aria-label="Menu">
+      <Content aria-label="Menu" isOpen={isOpen}>
         <Nav>
           <NavLink href="/work">Work</NavLink>
           <NavLink href="/solutions">Solutions</NavLink>
@@ -36,39 +34,45 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
     </Overlay>
   );
 };
-const AnimMobileMenu = css`
-  transform: translate(0%, 0%);
-  opacity: 1;
-`;
 const Overlay = styled.div`
   position: fixed;
+  right: 0;
   top: 0;
   left: 0;
-  right: 0;
   bottom: 0;
-  background: var(--color-backdrop);
   display: flex;
   justify-content: flex-end;
-  z-index: 1;
-  transform: translate(100%, -100%);
-  opacity: 0;
-  transition: transform 0.5s ease-in-out, opacity 0.4s ease;
+  z-index: -1;
 
-  ${(p) => p.isOpen && AnimMobileMenu}
+  ${(props) => props.isOpen && "z-index: 1;"}
+`;
+
+const ModalOpen = css`
+  width: 100vw;
+  transform: scale(100%);
+  border-radius: 0% 0% 2% 52% / 0% 1% 5% 17%;
+  opacity: 1;
 `;
 
 const Content = styled.div`
-  background: var(--color-gray);
   color: var(--color-white);
-  width: 100%;
-  height: 100%;
+
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border-radius: 0% 10% 0% 45% / 0% 0% 10% 15%;
+  opacity: 0;
+
+  background: var(--color-gray);
+
   padding-top: 100px;
+  transform: scale(0%);
+  border-radius: 50%;
+  transform-origin: 83% 6%;
+  transition: transform 0.5s ease, opacity 0.5s ease,
+    border-radius 0.2s ease-in-out 0.2s;
+  ${(props) => props.isOpen && ModalOpen}
 `;
 
 const Socials = styled.div`
@@ -83,7 +87,6 @@ const Socials = styled.div`
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 16px;
 `;
 
 const NavLink = styled.a`
@@ -91,7 +94,6 @@ const NavLink = styled.a`
   font-weight: ${WEIGHTS.medium};
   text-decoration: none;
   font-size: 1.3rem;
-  text-transform: uppercase;
   margin-bottom: 24px;
 `;
 

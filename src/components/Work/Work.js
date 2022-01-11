@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { QUERIES } from "../../constants";
 import Legend from "../Legend";
 
@@ -29,7 +29,18 @@ const Work = ({ work, willSpan }) => {
 const Span2 = css`
   grid-column: span 2;
 `;
+const AnimWork = keyframes`
+  from{
+    transform:scale(0%) translateY(-100%);
+    opacity:0;
+  }
+  to{
+    transform:scale(100%) translateY(0%);
+    opacity:1;
+  }
+`;
 const Wrapper = styled.a`
+  perspective: 1000px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -38,8 +49,12 @@ const Wrapper = styled.a`
   color: var(--color-white);
   cursor: pointer;
   transition: background 0.8s ease-in;
+  animation: ${AnimWork} 0.8s both cubic-bezier(0.4, 0.6, 0.6, 1);
+  transform-origin: 80% 90%;
+  animation-delay: 0.0339282s;
+  backface-visibility: visible;
+
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.1);
 
   @media ${QUERIES.tabletAndUp} {
     min-height: 42vw;
@@ -48,14 +63,27 @@ const Wrapper = styled.a`
     }}
   }
 
-  &:hover {
-    transition: background 0.6s ease-in;
-    background-color: rgba(0, 0, 0, 0.325);
-  }
-
-  @media ${QUERIES.tabletAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     min-height: 32.5vw;
     max-height: 32.5vw;
+  }
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.6s;
+  }
+  &:hover {
+    &::after {
+      opacity: 0.325;
+    }
   }
 `;
 const Img = styled.img`
@@ -71,7 +99,8 @@ const Img = styled.img`
   will-change: transform;
   ${Wrapper}:hover & {
     transform: scale(1.15);
-    transition: transform 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.325);
   }
 `;
 

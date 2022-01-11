@@ -47,6 +47,7 @@ table {
 	border-spacing: 0;
 }
 
+
 /* DESIGN TOKENS */
 html {
   --color-white: ${COLORS.white};
@@ -59,10 +60,13 @@ html {
   --font-weight-medium: ${WEIGHTS.medium};
   --font-weight-bold: ${WEIGHTS.bold};
   --font-weight-bolder:${WEIGHTS.bolder};
-    font-family:'Roboto', sans-serif;
+    font-family:'Inter', sans-serif;
  
 }
 
+::selection{
+  color:var(--color-secondary);
+}
 
 /* GLOBAL STYLES */
 *,

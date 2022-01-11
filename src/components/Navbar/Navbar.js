@@ -75,7 +75,7 @@ const NavLink = styled.a`
   margin-right: 40px;
   position: relative;
 
-  x &:hover {
+  &:hover {
     /* border-bottom: 1px solid var(--color-black); */
 
     &::before {

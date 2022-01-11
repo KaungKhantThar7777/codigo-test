@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Layout, Monitor, Settings, Smartphone } from "react-feather";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { QUERIES } from "../../constants";
 import { categories, works } from "../../data";
 import MaxWidthWrapper from "../MaxWidthWrapper";
@@ -7,6 +8,12 @@ import UnstyledButton from "../UnstyledButton";
 import WorkGrid from "../WorkGrid";
 
 const OurWork = () => {
+  const [category, setCategory] = useState("All");
+
+  const showWorks =
+    category === "All"
+      ? works
+      : works.filter((w) => w.category.includes(category));
   return (
     <>
       <MaxWidthWrapper>
@@ -17,9 +24,9 @@ const OurWork = () => {
         </Description>
         <CategoriesWrapper>
           <Categories>
-            {categories.map((category) => (
-              <UnstyledButton key={category}>
-                <Category>{category}</Category>
+            {categories.map((c) => (
+              <UnstyledButton key={c} onClick={() => setCategory(c)}>
+                <Category isActive={category === c}>{c}</Category>
               </UnstyledButton>
             ))}
           </Categories>
@@ -49,7 +56,7 @@ const OurWork = () => {
           </Legend>
         </CategoriesWrapper>
       </MaxWidthWrapper>
-      <WorkGrid works={works} />
+      <WorkGrid works={showWorks} />
     </>
   );
 };
@@ -96,8 +103,32 @@ const Categories = styled.div`
   gap: 16px 10px;
   flex: 1;
 `;
+
+const ActiveCategory = css`
+  font-weight: var(--font-weight-bold);
+  margin-left: 25px;
+`;
 const Category = styled.p`
   padding: 8px 0;
+  position: relative;
+  transition: margin-left 0.6s cubic-bezier(0.2, 1, 0.2, 1), top 1.5s;
+
+  ${(p) => p.isActive && ActiveCategory}
+
+  &::before {
+    content: "";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    left: -24px;
+    display: inline-block;
+    background-color: #d5333e;
+    transition: width 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+
+    ${(p) => p.isActive && "width: 15px;"}
+  }
 `;
 const Legend = styled.div`
   margin-top: 48px;
