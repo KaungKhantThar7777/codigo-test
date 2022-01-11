@@ -124,7 +124,12 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 0;
+  padding: 30px 0;
+
+  @media ${QUERIES.tabletAndUp} {
+    padding: 0;
+    padding-bottom: 60px;
+  }
 
   @media ${QUERIES.laptopAndUp} {
     flex-direction: row-reverse;
@@ -159,6 +164,7 @@ const Actions = styled.div`
 const Action = styled.a`
   display: flex;
   flex-direction: column;
+  gap: 10px;
   padding: 8px 12px;
   border: 1px solid #dad6da;
   font-size: 0.5rem;
@@ -181,7 +187,6 @@ const Action = styled.a`
   @media ${QUERIES.laptopAndUp} {
     padding: 16px 48px;
     flex-direction: row;
-    gap: 10px;
   }
 `;
 const Icon = styled.div`
