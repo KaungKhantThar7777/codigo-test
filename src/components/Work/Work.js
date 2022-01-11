@@ -1,10 +1,11 @@
 import styled, { css, keyframes } from "styled-components";
+import { Link } from "react-router-dom";
 import { QUERIES } from "../../constants";
 import Legend from "../Legend";
 
 const Work = ({ work, willSpan }) => {
   return (
-    <Wrapper willSpan={willSpan}>
+    <Wrapper willSpan={willSpan} to={"/work/something"}>
       <Img src={work.photo} alt={work.title} />
       <Categories>
         {work.category.map((c, i) => (
@@ -39,7 +40,7 @@ const AnimWork = keyframes`
     opacity:1;
   }
 `;
-const Wrapper = styled.a`
+const Wrapper = styled(Link)`
   perspective: 1000px;
   display: flex;
   flex-direction: column;

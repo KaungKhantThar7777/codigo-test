@@ -60,8 +60,9 @@ const Footer = () => {
 
 const Wrapper = styled.div`
   padding-top: 50px;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background: rgb(250, 250, 250);
 `;
 const Title = styled.h4`
   text-align: center;
@@ -104,12 +105,17 @@ const Chat = styled.div`
 
 const ChatTitle = styled.h5`
   position: relative;
-  display: inline;
+  display: inline-block;
+  width: 90%;
   font-weight: var(--font-weight-bold);
   font-size: 1.8rem;
   transition: color 0.8s cubic-bezier(0.2, 0.6, 0.4, 1);
   ${Chat}:hover & {
     color: var(--color-primary);
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    display: inline;
   }
 `;
 

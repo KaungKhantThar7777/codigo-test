@@ -57,7 +57,7 @@ const Logo = styled.div`
   }
 `;
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   display: none;
 
   @media ${QUERIES.laptopAndUp} {
@@ -74,6 +74,7 @@ const NavLink = styled.a`
   font-size: 0.875rem;
   margin-right: 40px;
   position: relative;
+  cursor: pointer;
 
   &:hover {
     /* border-bottom: 1px solid var(--color-black); */
@@ -98,13 +99,21 @@ const NavLink = styled.a`
   }
 `;
 
-const Quote = styled(NavLink)`
+export const Quote = styled(NavLink)`
   color: var(--color-white);
   background-color: var(--color-gray);
 
   padding: 17px 22px;
   border-radius: 30px;
   display: inline-block;
+  transition: all 0.3s;
+
+  &::before {
+    height: 0px;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 const AnimIcon = keyframes`
   from{
@@ -114,7 +123,7 @@ const AnimIcon = keyframes`
     opacity:1
   }
 `;
-const MobileAction = styled(UnstyledButton)`
+export const MobileAction = styled(UnstyledButton)`
   background-color: var(--color-gray);
   padding: 16px;
   border-radius: 50%;

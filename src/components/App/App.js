@@ -1,13 +1,17 @@
+import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../Footer";
-import Navbar from "../Navbar";
 import OurWork from "../OurWork";
+import WorkDetails from "../WorkDetails";
 
 function App() {
   return (
     <Wrapper>
-      <Navbar />
-      <OurWork />
+      <Routes>
+        <Route path="/" element={<OurWork />} />
+        <Route path="/work/:slug" element={<WorkDetails />} />
+      </Routes>
+
       <Footer />
     </Wrapper>
   );

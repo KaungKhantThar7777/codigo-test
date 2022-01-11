@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import { QUERIES } from "../../constants";
 import { categories, works } from "../../data";
 import MaxWidthWrapper from "../MaxWidthWrapper";
+import Navbar from "../Navbar";
 import UnstyledButton from "../UnstyledButton";
 import WorkGrid from "../WorkGrid";
 
@@ -16,6 +17,7 @@ const OurWork = () => {
       : works.filter((w) => w.category.includes(category));
   return (
     <>
+      <Navbar />
       <MaxWidthWrapper>
         <Description>
           <p>Here's the 5% of</p>
