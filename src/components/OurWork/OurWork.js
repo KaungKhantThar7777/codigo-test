@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Layout, Monitor, Settings, Smartphone } from "react-feather";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { QUERIES } from "../../constants";
 import { categories, works } from "../../data";
 import MaxWidthWrapper from "../MaxWidthWrapper";
@@ -16,9 +16,9 @@ const OurWork = () => {
       ? works
       : works.filter((w) => w.category.includes(category));
   return (
-    <>
+    <Wrapper>
       <Navbar />
-      <MaxWidthWrapper>
+      <AnimWrapper>
         <Description>
           <p>Here's the 5% of</p>
           <p>our published work.</p>
@@ -57,11 +57,27 @@ const OurWork = () => {
             </LegendTypes>
           </Legend>
         </CategoriesWrapper>
-      </MaxWidthWrapper>
+      </AnimWrapper>
       <WorkGrid works={showWorks} />
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div``;
+const AnimDescription = keyframes`
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform: translateY(0%)
+  }
+`;
+const AnimWrapper = styled(MaxWidthWrapper)`
+  animation: ${AnimDescription} 1s ease-in-out;
+  animation-fill-mode: both;
+`;
 
 const Description = styled.div`
   padding-top: 120px;

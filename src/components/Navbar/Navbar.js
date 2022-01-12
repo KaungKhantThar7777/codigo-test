@@ -35,11 +35,23 @@ const Navbar = () => {
   );
 };
 
+const AnimWrapper = keyframes`
+  from{
+    transform:translateY(-10px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+`;
 const Wrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 18px;
+
+  animation: ${AnimWrapper} 0.7s ease-in-out;
 
   @media ${QUERIES.laptopAndUp} {
     padding-top: 30px;

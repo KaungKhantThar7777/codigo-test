@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Menu, X, ArrowLeft } from "react-feather";
+import { ArrowLeft, Menu, X } from "react-feather";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import styled from "styled-components";
-import MaxWidthWrapper from "../MaxWidthWrapper";
+import styled, { keyframes } from "styled-components";
+import { QUERIES } from "../../constants";
+import { workDetails } from "../../data";
 import MobileMenu from "../MobileMenu";
 import { MobileAction, Nav, Quote } from "../Navbar/Navbar";
-import { workDetails } from "../../data";
-import { QUERIES } from "../../constants";
 
 console.log(workDetails);
 
@@ -27,79 +26,93 @@ const WorkDetails = () => {
 
   return (
     <Wrapper>
-      <MaxWidthWrapper>
-        <Header>
-          <BackHome to="/">
-            <ArrowLeft color="var(--color-primary)" />
-            Back To Work
-          </BackHome>
+      <Header>
+        <BackHome to="/">
+          <ArrowLeft color="var(--color-primary)" />
+          Back To Work
+        </BackHome>
 
-          <MobileAction onClick={() => setIsOpen((prev) => !prev)}>
-            <Icon color="white" width={24} height={24} />
-          </MobileAction>
+        <MobileAction onClick={() => setIsOpen((prev) => !prev)}>
+          <Icon color="white" width={24} height={24} />
+        </MobileAction>
 
-          <Nav>
-            <Quote>Request a quote</Quote>
-          </Nav>
-        </Header>
+        <Nav>
+          <Quote>Request a quote</Quote>
+        </Nav>
+      </Header>
 
-        <Title>{workDetails.name}</Title>
+      <Title>{workDetails.name}</Title>
 
-        <Details>
-          <SliderWrapper>
-            <Slider {...settings}>
-              {workDetails.gallery.map((photo) => (
-                <ImgWrapper>
-                  <img src={photo.normal} alt={workDetails.name} />
-                </ImgWrapper>
-              ))}
-            </Slider>
-          </SliderWrapper>
+      <Details>
+        <SliderWrapper>
+          <SliderBg background={workDetails.colour_scheme} />
+          <StyledSlider {...settings}>
+            {workDetails.gallery.map((photo) => (
+              <ImgWrapper>
+                <img src={photo.normal} alt={workDetails.name} />
+              </ImgWrapper>
+            ))}
+          </StyledSlider>
+        </SliderWrapper>
 
-          <Texts>
-            <Actions>
-              <Action
-                href={workDetails.ios_url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Ios />
-                <div>
-                  <p>Available on </p>
-                  <p>App Store</p>
-                </div>
-              </Action>
+        <Texts>
+          <Actions>
+            <Action
+              href={workDetails.ios_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Ios />
+              <div>
+                <p>Available on </p>
+                <p>App Store</p>
+              </div>
+            </Action>
 
-              <Action
-                href={workDetails.android_url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Android />
-                <div>
-                  <p>Available on </p>
-                  <p>Google play</p>
-                </div>
-              </Action>
-            </Actions>
+            <Action
+              href={workDetails.android_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Android />
+              <div>
+                <p>Available on </p>
+                <p>Google play</p>
+              </div>
+            </Action>
+          </Actions>
 
-            <Description>{workDetails.description}</Description>
+          <Description>{workDetails.description}</Description>
 
-            <FeaturesContainer>
-              <FeatureTitle>Key Features</FeatureTitle>
-              <KeyFeatures
-                dangerouslySetInnerHTML={{ __html: workDetails.key_features }}
-              ></KeyFeatures>
-            </FeaturesContainer>
-          </Texts>
-        </Details>
-      </MaxWidthWrapper>
+          <FeaturesContainer>
+            <FeatureTitle>Key Features</FeatureTitle>
+            <KeyFeatures
+              dangerouslySetInnerHTML={{ __html: workDetails.key_features }}
+            ></KeyFeatures>
+          </FeaturesContainer>
+        </Texts>
+      </Details>
+
       <MobileMenu isOpen={isOpen} onDismiss={() => setIsOpen(false)} />
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const AnimWork = keyframes`
+  from{
+    transform: translateY(-50px);
+    opacity:0;
+  }
+  to{
+    transform: translateY(0%);
+    opacity:1;
+  }
+`;
+const Wrapper = styled.div`
+  animation: ${AnimWork} 1s ease-in-out;
+  width: 90%;
+  margin: 0 auto;
+`;
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -120,6 +133,46 @@ const Title = styled.h3`
     margin-bottom: 30px;
   }
 `;
+
+const AnimSlider = keyframes`
+  from{
+    transform: scale(0%);
+    opacity: 0;
+  }
+
+  to{
+    transform: scale(100%);
+    opacity:1;
+  }
+`;
+
+const AnimBg = keyframes`
+  from{
+    transform:scale(0%);
+  }
+  to{
+    transform:scale(100%);
+  }
+`;
+
+const SliderBg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 75%;
+  height: 75%;
+  background: ${(props) => props.background};
+  border-radius: 50%;
+  z-index: -1;
+
+  animation: ${AnimBg} 0.5s ease-in-out;
+  animation-fill-mode: both;
+  animation-delay: 1s;
+`;
+
 const Details = styled.div`
   display: flex;
   flex-direction: column;
@@ -144,11 +197,18 @@ const Details = styled.div`
 
 const SliderWrapper = styled.div`
   width: 100%;
+  position: relative;
 
   @media ${QUERIES.laptopAndUp} {
-    width: 45%;
+    width: 50%;
     margin-top: -100px;
   }
+`;
+
+const StyledSlider = styled(Slider)`
+  animation: ${AnimSlider} 1s ease-in-out;
+  animation-delay: 1.5s;
+  animation-fill-mode: both;
 `;
 const ImgWrapper = styled.div`
   > img {
