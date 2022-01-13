@@ -8,8 +8,6 @@ import { workDetails } from "../../data";
 import MobileMenu from "../MobileMenu";
 import { MobileAction, Nav, Quote } from "../Navbar/Navbar";
 
-console.log(workDetails);
-
 const WorkDetails = () => {
   const [isOpen, setIsOpen] = useState(false);
   const Icon = isOpen ? X : Menu;
