@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "react-feather";
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 import { WEIGHTS } from "../../constants";
 
 const MobileMenu = ({ isOpen }) => {
