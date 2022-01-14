@@ -100,6 +100,7 @@ html, body, #root {
 body {
   background-color: var(--color-gray-100);
   font-family: 'Crimson Pro', sans-serif;
+  overflow-x:hidden;
 }
 
 /*

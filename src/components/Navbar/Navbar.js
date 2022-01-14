@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "react-feather";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import UnstyledButton from "../UnstyledButton";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import MobileMenu from "../MobileMenu";
@@ -29,7 +29,7 @@ const Navbar = () => {
           <Icon color="white" width={24} height={24} />
         </MobileAction>
       </Wrapper>
-
+      <ContentBg isOpen={isOpen}></ContentBg>
       <MobileMenu isOpen={isOpen} onDismiss={() => setIsOpen(false)} />
     </MaxWidthWrapper>
   );
@@ -152,4 +152,29 @@ export const MobileAction = styled(UnstyledButton)`
     display: block;
   }
 `;
+
+const MenuBg = css`
+  width: 140vh;
+  height: 140vh;
+  background: var(--color-gray);
+  transition-delay: 0ms;
+`;
+const ContentBg = styled.div`
+  transition-delay: 350ms;
+  width: 10px;
+  height: 10px;
+
+  transition: all 500ms ease-in-out;
+
+  ${(props) => props.isOpen && MenuBg}
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(36%, -22%);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: -40px;
+`;
+
 export default Navbar;
