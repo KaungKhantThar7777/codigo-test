@@ -158,6 +158,13 @@ const MenuBg = css`
   height: 140vh;
   background: var(--color-gray);
   transition-delay: 0ms;
+  transform: translate(36%, -22%);
+
+  @media ${QUERIES.tabletAndUp} {
+    width: 150vw;
+    height: 150vw;
+    transform: translate(26%, -48%);
+  }
 `;
 const ContentBg = styled.div`
   transition-delay: 350ms;
@@ -169,7 +176,6 @@ const ContentBg = styled.div`
   ${(props) => props.isOpen && MenuBg}
   z-index: -1;
   border-radius: 50%;
-  transform: translate(36%, -22%);
 
   position: absolute;
   top: 0;
