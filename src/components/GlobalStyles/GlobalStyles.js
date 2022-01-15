@@ -103,6 +103,9 @@ body {
   overflow-x:hidden;
 }
 
+.slick-dots{
+  bottom:0px;
+}
 /*
   Remove default button styles. We'll provide our own at the
   component level
