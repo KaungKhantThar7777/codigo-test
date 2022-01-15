@@ -196,12 +196,15 @@ const Details = styled.div`
 `;
 
 const SliderWrapper = styled.div`
+  padding-bottom: 20px;
   width: 100%;
   position: relative;
+  overflow: hidden;
 
   @media ${QUERIES.laptopAndUp} {
     width: 50%;
     margin-top: -100px;
+    padding-bottom: 0;
   }
 `;
 
