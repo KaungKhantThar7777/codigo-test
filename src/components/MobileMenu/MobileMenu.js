@@ -1,6 +1,6 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "react-feather";
 import styled, { css } from "styled-components";
-import { WEIGHTS } from "../../constants";
+import { QUERIES, WEIGHTS } from "../../constants";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
@@ -72,6 +72,9 @@ const Content = styled.div`
   transition: transform 0.5s ease, opacity 0.5s ease,
     border-radius 0.2s ease-in-out 0.2s;
   ${(props) => props.isOpen && ModalOpen}
+  @media ${QUERIES.tabletAndUp} {
+    padding-top: 200px;
+  }
 `;
 
 const Socials = styled.div`
