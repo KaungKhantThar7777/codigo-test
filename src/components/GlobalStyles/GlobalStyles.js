@@ -103,7 +103,7 @@ body {
 }
 
 .slick-dots{
-  bottom:30px;
+  bottom:10px;
 }
 /*
   Remove default button styles. We'll provide our own at the
