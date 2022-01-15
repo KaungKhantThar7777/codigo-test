@@ -52,7 +52,11 @@ const Wrapper = styled(Link)`
   transition: background 0.8s ease-in;
   animation: ${AnimWork} 0.8s both cubic-bezier(0.4, 0.6, 0.6, 1);
   transform-origin: 80% 90%;
+<<<<<<< HEAD
   animation-delay: 1s;
+=======
+  animation-delay: 0.5s;
+>>>>>>> 33314dbbadf990b82013877ad987ffac043a91ad
   backface-visibility: visible;
   overflow: hidden;
 
