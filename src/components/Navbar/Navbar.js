@@ -5,6 +5,7 @@ import UnstyledButton from "../UnstyledButton";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import MobileMenu from "../MobileMenu";
 import { QUERIES } from "../../constants";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,12 +18,12 @@ const Navbar = () => {
         </Logo>
 
         <Nav>
-          <NavLink href="/work">Work</NavLink>
-          <NavLink href="/solutions">Solutions</NavLink>
-          <NavLink href="/services">Services</NavLink>
-          <NavLink href="/about-us">About us</NavLink>
-          <NavLink href="/blog">Blog</NavLink>
-          <Quote href="/quote">Request a quote</Quote>
+          <NavLink to="/work">Work</NavLink>
+          <NavLink to="/solutions">Solutions</NavLink>
+          <NavLink to="/services">Services</NavLink>
+          <NavLink to="/about-us">About us</NavLink>
+          <NavLink to="/blog">Blog</NavLink>
+          <Quote>Request a quote</Quote>
         </Nav>
 
         <MobileAction onClick={() => setIsOpen((prev) => !prev)}>
@@ -80,7 +81,7 @@ export const Nav = styled.nav`
   }
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   color: var(--color-black);
   text-decoration: none;
   font-size: 0.875rem;
@@ -111,7 +112,7 @@ const NavLink = styled.a`
   }
 `;
 
-export const Quote = styled(NavLink)`
+export const Quote = styled(UnstyledButton)`
   color: var(--color-white);
   background-color: var(--color-gray);
 

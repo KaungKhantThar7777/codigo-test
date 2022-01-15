@@ -8,8 +8,8 @@ function App() {
   return (
     <Wrapper>
       <Routes>
-        <Route path="/" element={<OurWork />} />
         <Route path="/work/:slug" element={<WorkDetails />} />
+        <Route path="/" element={<OurWork />} />
       </Routes>
 
       <Footer />
