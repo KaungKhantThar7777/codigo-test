@@ -102,6 +102,9 @@ body {
   font-family: 'Crimson Pro', sans-serif;
 }
 
+.slick-dots{
+  bottom:30px;
+}
 /*
   Remove default button styles. We'll provide our own at the
   component level
