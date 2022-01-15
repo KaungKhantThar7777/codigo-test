@@ -5,7 +5,7 @@ import Legend from "../Legend";
 
 const Work = ({ work, willSpan }) => {
   return (
-    <Wrapper willSpan={willSpan} to={"/work/something"}>
+    <Wrapper willspan={willSpan} to={"/work/1"}>
       <Img src={work.photo} alt={work.title} />
       <Categories>
         {work.category.map((c, i) => (
@@ -52,14 +52,14 @@ const Wrapper = styled(Link)`
   transition: background 0.8s ease-in;
   animation: ${AnimWork} 0.8s both cubic-bezier(0.4, 0.6, 0.6, 1);
   transform-origin: 80% 90%;
-  animation-delay: 0.0339282s;
+  animation-delay: 1s;
   backface-visibility: visible;
   overflow: hidden;
 
   @media ${QUERIES.tabletAndUp} {
     min-height: 42vw;
     ${(p) => {
-      return p.willSpan && Span2;
+      return p.willspan && Span2;
     }}
   }
 
